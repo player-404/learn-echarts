@@ -2,6 +2,10 @@
 import Etransform from "../components/ETransform.vue";
 import VisualMap from "../components/ VisualMap.vue";
 import LineMap from "../components/LineMap.vue";
+import LegendCharts from "../components/LegendCharts.vue";
+import BarChart from "../components/BarChart.vue";
+import LineCharts from "../components/LineCharts.vue";
+import PieCharts from "../components/PieCharts.vue";
 </script>
 
 <template>
@@ -9,7 +13,11 @@ import LineMap from "../components/LineMap.vue";
     <!-- <XyAxis></XyAxis> -->
     <!-- <VisualMap></VisualMap> -->
     <!-- <MapDemo></MapDemo> -->
-    <LineMap></LineMap>
+    <!-- <LineMap></LineMap> -->
+    <!-- <LegendCharts></LegendCharts> -->
+    <!-- <BarChart></BarChart> -->
+    <!-- <LineCharts></LineCharts> -->
+    <PieCharts></PieCharts>
 </template>
 
 <style scoped lang="scss">

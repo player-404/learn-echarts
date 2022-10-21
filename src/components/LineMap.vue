@@ -1,5 +1,5 @@
 <script setup>
-import { useEcharts, registerMap } from "../utils/echarts";
+import { useEcharts, useRegisterMap } from "../utils/echarts";
 import { onMounted, reactive, ref, watch } from "vue";
 import { pushHistory } from "../utils/mapHistory";
 import geoJson from "../geoJson";
@@ -33,7 +33,7 @@ onMounted(() => {
 watch(index, (newv) => {
     const name = historyList[newv].name;
     const map = geoJson[name].geoJson;
-    registerMap(name, { geoJson: map });
+    useRegisterMap(name, { geoJson: map });
     myEchart.value.setOption({
         geo: {
             map: name,

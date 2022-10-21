@@ -1,7 +1,7 @@
 <script setup>
 import mapGeoJson from "../geoJson";
 import { ref, shallowRef, onMounted, watch, reactive, watchEffect } from "vue";
-import { registerMap, useEcharts } from "../utils/echarts";
+import { useRegisterMap, useEcharts } from "../utils/echarts";
 import { pushHistory, popHistiry } from "../utils/mapHistory.js";
 import mapData from "../geoJson/全国.json";
 
@@ -46,7 +46,7 @@ watch(index, (newv) => {
     // 清空当前实例，会移除实例中所有的组件和图表。
     let name = historyList[newv].name;
     const geoJson = map.value[name].geoJson;
-    registerMap(name, { geoJson });
+    useRegisterMap(name, { geoJson });
     myEchart.value.setOption({
         // 标题组件，包含主标题和副标题。
         title: {
@@ -90,28 +90,28 @@ watch(index, (newv) => {
             },
         },
         //visualMap 是视觉映射组件，用于进行『视觉编码』，也就是将数据映射到视觉元素（视觉通道）, 与series关联
-        // visualMap: {
-        //     type: "continuous", // 定义为连续型 visualMap
-        //     //指定 visualMapContinuous 组件的允许的最小值
-        //     min: 0,
-        //     //指定 visualMapContinuous 组件的允许的最大值
-        //     max: 100,
-        //     //指定手柄对应数值的位置
-        //     range: [0, 100],
-        //     //是否显示拖拽用的手柄
-        //     calculable: true,
-        //     //拖拽时，是否实时更新。
-        //     realtime: true,
-        //     //两端的文本
-        //     text: ["high", "low"],
-        //     //定义 在选中范围中 的视觉元素
-        //     inRange: {
-        //         //图元的颜色。
-        //         color: ["#121122", "rgba(3,4,5,0.4)", "red"],
-        //     },
-        //     left: 250,
-        //     bottom: 400,
-        // },
+        visualMap: {
+            type: "continuous", // 定义为连续型 visualMap
+            //指定 visualMapContinuous 组件的允许的最小值
+            min: 0,
+            //指定 visualMapContinuous 组件的允许的最大值
+            max: 100,
+            //指定手柄对应数值的位置
+            range: [0, 100],
+            //是否显示拖拽用的手柄
+            calculable: true,
+            //拖拽时，是否实时更新。
+            realtime: true,
+            //两端的文本
+            text: ["high", "low"],
+            //定义 在选中范围中 的视觉元素
+            inRange: {
+                //图元的颜色。
+                color: ["#121122", "rgba(3,4,5,0.4)", "red"],
+            },
+            left: 250,
+            bottom: 400,
+        },
         // 数据集
         dataset: {
             //纬度
@@ -169,7 +169,7 @@ watch(index, (newv) => {
             {
                 name: "经济",
                 type: "map",
-                // 使用 registerMap 注册的地图名称。
+                // 使用 useRegisterMap 注册的地图名称。
                 map: name,
                 // 是否显示地理坐标系组件。
                 show: true,

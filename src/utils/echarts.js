@@ -9,6 +9,7 @@ import {
     MapChart,
     LinesChart,
     EffectScatterChart,
+    LineChart,
 } from "echarts/charts";
 // 引入提示框，标题，直角坐标系，数据集，内置数据转换器组件，组件后缀都为 Component
 import {
@@ -46,10 +47,11 @@ echarts.use([
     VisualMapComponent,
     LinesChart,
     EffectScatterChart,
+    LineChart,
 ]);
 
 // 注册地图
-export const registerMap = (name, geoJosn) => echarts.registerMap(name, geoJosn);
+export const useRegisterMap = (name, geoJosn) => echarts.registerMap(name, geoJosn);
 
 // 初始化
 export const useEcharts = (el, theme, options) => echarts.init(el, theme, options);
